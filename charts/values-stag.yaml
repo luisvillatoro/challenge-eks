@@ -1,0 +1,18 @@
+replicaCount: 1
+image:
+  repository: cactus-challenge12.azurecr.io/challenge
+
+publicUrl: "cactus-stag-challengedevops.duckdns.org"
+
+specs:
+  ingress:
+    publicUrl: challengedevops.duckdns.org
+    port: 3000
+  service:
+    name: http
+    port: 3000
+    protocol: TCP
+    type: ClusterIP
+
+env:
+  URL: "cactus-stag-challengedevops.duckdns.org:80"
