@@ -1,3 +1,11 @@
 argocd:
   global:
     domain: argocd.duckdns.org
+
+argo-workflows:
+  workflow:
+    rbac:
+      create: false
+  controller:
+    rbac:
+      create: true

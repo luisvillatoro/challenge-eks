@@ -1,6 +1,6 @@
 replicaCount: 1
 image:
-  repository: cactus-challenge12.azurecr.io/challenge
+  repository: 672262484140.dkr.ecr.us-east-1.amazonaws.com/cactustech-challenge
 
 publicUrl: "cactus-stag-challengedevops.duckdns.org"
 
