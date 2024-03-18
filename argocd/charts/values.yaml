@@ -4,8 +4,12 @@ argocd:
 
 argo-workflows:
   workflow:
+    serviceAccount:
+      create: true
     rbac:
-      create: false
+      create: true
   controller:
     rbac:
       create: true
+  server:
+    authMode: "server"
