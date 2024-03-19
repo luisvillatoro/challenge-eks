@@ -1,7 +1,7 @@
 replicaCount: 1
 image:
   repository: 672262484140.dkr.ecr.us-east-1.amazonaws.com/cactustech-challenge
-
+namespace: cactustech
 publicUrl: "cactus-challengedevops.duckdns.org"
 
 specs:
