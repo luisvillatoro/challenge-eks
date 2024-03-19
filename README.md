@@ -1,6 +1,6 @@
 Hi There, this repos is meant to be for deploying a k8s cluster in AWS EKS using terraform and deploying and a little Node application, we are going to use a lot of technologies to accomplish the objective and I'm going to explain to you step by step on how to do it.
 
-First step:
+STEP ONE:
 
 You'll need to install in your computer the following tools:
 
@@ -11,7 +11,7 @@ You'll need to install in your computer the following tools:
 
 Once that you installed the tools now we can proceed with the next step step:
 
-Second step:
+STEP TWO:
 
 Configure AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY in your local environment, so that type the commands below:
 
@@ -27,7 +27,7 @@ $aws configure // This command is going to request you the two variables above a
 
 ![image](https://github.com/luisvillatoro/cactus-challenge/assets/32403184/4c76f710-3ee3-4583-a309-432c7d0467c8)
 
-Third step:
+STEP THREE:
 
 Now that you have your credentials configured, you can clone the repo in you computer and navigate to /terrafom folder and type the commands below:
 
@@ -35,7 +35,7 @@ $terraform plan // This will show you the resources that Terraform is going to c
 
 $terraform apply // This command is going to deploy all the resources mentioned in the plan. (It might take several minutes to deploy all the resources)
 
-Once the apply is completed you´ll need to write down the outputs of the apply and give yourself access to the cluster with the command:
+Once the apply is completed you´ll need to copy the outputs of the apply and give yourself access to the cluster with the command:
 
 $ aws eks update-kubeconfig --name $cluster-name // This command will give you access to the cluster with Kubectl within the terminal
 
@@ -46,7 +46,7 @@ $kubectl get nodes // You should see something like this
 <img width="515" alt="image" src="https://github.com/luisvillatoro/cactus-challenge/assets/32403184/d93bfd66-9511-4fc8-9c27-4c12e07d7482">
 
 
-Fourth step:
+STEP FOUR:
 
 Install ArgoCD, for this step you can simply navigate to /argocd/charts and there you will see a bash script named install-argocd.sh give it execute permission with $chmod 744 install-argocd.sh, and run it, this command is going to install ArgoCD to your cluster in the namespace of argocd.
 
@@ -58,3 +58,16 @@ Now that we have the credentials, you can perform a port-forwar to access the Ar
 
 $kubectl -n argocd port-forward svc/argocd-argocd-server 8080:443
 
+STEP FIVE:
+
+Open a new terminal window and navigate to /charts/ folder in the repo and type the command:
+
+$kubectl apply -f application.yaml // The commando is going to install the application cactustech-challenge
+
+And that it's all you can test the app usign the following command:
+
+$kubectl -n argocd port-forward svc/cactustech-challenge 3000:3000
+
+To destroy everything use the destroy.sh script, you will need to give it permission with:
+
+$chmod 744 destroy.sh and execute it $./destroy.sh

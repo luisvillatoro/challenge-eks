@@ -19,9 +19,6 @@ spec:
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}"
-          env:
-            - name: URL
-              value: {{ .Values.env.URL }}
           ports:
             - containerPort: 3000
               protocol: TCP

@@ -1,0 +1,12 @@
+---
+- name: Delete ECR Image
+  hosts: localhost
+  become: false
+  gather_facts: false
+
+  tasks:
+
+  - name: Delete Image from ECR
+    shell:
+      cmd: "aws ecr list-images --repository-name cactustech-challange --query 'imageIds[*]' --output text | while read imageId; do aws ecr batch-delete-image --repository-name cactustech-challange --image-ids imageDigest=$imageId; done"
+
