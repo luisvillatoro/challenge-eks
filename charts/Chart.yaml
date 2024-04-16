@@ -1,6 +1,6 @@
 apiVersion: v1
-name: cactustech-challenge
-description: A Helm chart for the devops cactus-challenge
+name: challenge
+description: A Helm chart for the devops challenge
 type: application
 version: 0.1.1
 appVersion: 1.0.1

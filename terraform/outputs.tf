@@ -9,7 +9,7 @@ output "cluster_security_group_id" {
 }
 
 output "region" {
-  description = "AWS region of resources"
+  description = "AWS region were resources are going to be created"
   value       = var.region
 }
 
@@ -19,6 +19,6 @@ output "cluster_name" {
 }
 
 output "repository_url" {
-  description = "The URL of the created ECR repository"
+  description = "The URL of the ECR repository"
   value       = aws_ecr_repository.cactustech-ecr.repository_url
 }

@@ -1,5 +1,9 @@
 locals {
-  cluster_name = "cactustech-challenge-cluster"
+  cluster_name = "challenge-cluster"
+}
+
+data "aws_availability_zones" "available" {
+
 }
 
 module "eks" {
@@ -26,7 +30,7 @@ module "eks" {
 
       min_size     = 1
       max_size     = 3
-      desired_size = 2
+      desired_size = 1
     }
 
     two = {
@@ -35,7 +39,7 @@ module "eks" {
       instance_types = ["t3.small"]
 
       min_size     = 1
-      max_size     = 2
+      max_size     = 3
       desired_size = 1
     }
   }
